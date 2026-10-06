@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    >
+
+    <title>Para Isa ♡</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=IM+Fell+English:ital@0;1&family=Italianno&family=Libre+Caslon+Display&display=swap');
+
+        :root {
+            --cream: #f1e7d4;
+            --ink: #34271f;
+            --brown: #665043;
+            --faded: #927c68;
+            --wine: #744b43;
+            --gold: #a4875d;
+            --shadow: rgba(62, 43, 31, .18);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+        }
+
+        body {
+            min-height: 100%;
+            overflow: hidden;
+
+            display: grid;
+            place-items: center;
+
+            color: var(--ink);
+
+            font-family:
+                "Cormorant Garamond",
+                Georgia,
+                serif;
+
+            background:
+                radial-gradient(
+                    ellipse at center,
+                    rgba(255, 255, 255, .48) 0%,
+                    rgba(255, 255, 255, 0) 65%
+                ),
+                linear-gradient(
+                    115deg,
+                    #d9c9ae,
+                    #eee3cf 45%,
+                    #d8c5a6
+                );
+        }
+
+        /* Papel envejecido */
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            z-index: 20;
+
+            pointer-events: none;
+
+            opacity: .13;
+
+            background-image:
+                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
+
+            mix-blend-mode: multiply;
+        }
+
+        /* Viñeta */
+        body::after {
+            content: "";
+            position: fixed;
+            inset: 0;
+            z-index: 10;
+
+            pointer-events: none;
+
+            background:
+                radial-gradient(
+                    ellipse at center,
+                    transparent 48%,
+                    rgba(73, 48, 32, .15) 100%
+                );
+        }
+
+        .page {
+            position: relative;
+
+            width: min(920px, 94vw);
+            height: min(720px, 94vh);
+
+            min-height: 430px;
+
+            display: grid;
+            place-items: center;
+
+            padding:
+                clamp(35px, 7vh, 65px)
+                clamp(25px, 6vw, 60px);
+
+            text-align: center;
+
+            background: #f1e7d4;
+
+            border: 1px solid rgba(92, 67, 46, .2);
+
+            box-shadow:
+                0 25px 60px var(--shadow),
+                inset 0 0 90px rgba(99, 67, 42, .1);
+
+            isolation: isolate;
+        }
+
+        /* Marcos interiores */
+        .page::before {
+            content: "";
+            position: absolute;
+            inset: 18px;
+
+            border: 1px solid rgba(101, 74, 50, .25);
+
+            pointer-events: none;
+        }
+
+        .page::after {
+            content: "";
+            position: absolute;
+            inset: 25px;
+
+            border: 1px solid rgba(101, 74, 50, .09);
+
+            pointer-events: none;
+        }
+
+        .corner {
+            position: absolute;
+            z-index: 2;
+
+            color: var(--gold);
+
+            font-size: 28px;
+            line-height: 1;
+
+            opacity: .7;
+        }
+
+        .tl {
+            top: 33px;
+            left: 33px;
+        }
+
+        .tr {
+            top: 33px;
+            right: 33px;
+            transform: rotate(90deg);
+        }
+
+        .bl {
+            bottom: 33px;
+            left: 33px;
+            transform: rotate(-90deg);
+        }
+
+        .br {
+            right: 33px;
+            bottom: 33px;
+            transform: rotate(180deg);
+        }
+
+        .content {
+            position: relative;
+            z-index: 3;
+
+            width: 100%;
+            max-width: 760px;
+
+            animation:
+                entrance 1.3s
+                cubic-bezier(.2, .8, .2, 1);
+        }
+
+        .ornament {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 14px;
+
+            margin-bottom: clamp(10px, 2vh, 20px);
+
+            color: var(--gold);
+
+            font-size: 14px;
+        }
+
+        .ornament::before,
+        .ornament::after {
+            content: "";
+
+            width: clamp(40px, 8vw, 70px);
+            height: 1px;
+
+            background:
+                linear-gradient(
+                    to right,
+                    transparent,
+                    var(--gold)
+                );
+        }
+
+        .ornament::after {
+            transform: scaleX(-1);
+        }
+
+        .eyebrow {
+            margin: 0 0 5px;
+
+            color: var(--wine);
+
+            font-family:
+                "IM Fell English",
+                Georgia,
+                serif;
+
+            font-size:
+                clamp(11px, 1.5vw, 14px);
+
+            font-style: italic;
+
+            letter-spacing: .15em;
+        }
+
+        h1 {
+            margin: 0;
+
+            color: var(--ink);
+
+            font-family:
+                "Italianno",
+                cursive;
+
+            font-size:
+                clamp(55px, 8vw, 92px);
+
+            font-weight: 400;
+            line-height: .85;
+
+            text-shadow:
+                1px 1px 0 rgba(255, 255, 255, .4);
+        }
+
+        .subtitle {
+            max-width: 430px;
+
+            margin:
+                clamp(15px, 2.5vh, 24px)
+                auto
+                clamp(25px, 5vh, 45px);
+
+            color: var(--brown);
+
+            font-family:
+                "IM Fell English",
+                Georgia,
+                serif;
+
+            font-size:
+                clamp(15px, 2vw, 19px);
+
+            font-style: italic;
+
+            line-height: 1.4;
+        }
+
+        /* =========================================
+           CONTADOR
+        ========================================= */
+
+        .countdown {
+            width: min(690px, 100%);
+            margin: 0 auto;
+
+            display: grid;
+
+            grid-template-columns:
+                minmax(0, 1fr)
+                auto
+                minmax(0, 1fr)
+                auto
+                minmax(0, 1fr)
+                auto
+                minmax(0, 1fr);
+
+            align-items: start;
+        }
+
+        .unit {
+            min-width: 0;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /*
+         * AQUÍ está la diferencia.
+         *
+         * Ya no usamos IM Fell para los números.
+         *
+         * Libre Caslon Display tiene numerales mucho
+         * más equilibrados visualmente y, además,
+         * hacemos que cada cifra tenga exactamente
+         * el mismo espacio horizontal.
+         */
+
+        .number {
+            display: flex;
+
+            width: 100%;
+
+            justify-content: center;
+
+            color: var(--ink);
+
+            font-family:
+                "Libre Caslon Display",
+                "Times New Roman",
+                serif;
+
+            font-size:
+                clamp(44px, 7vw, 76px);
+
+            font-weight: 400;
+
+            line-height: .95;
+
+            /*
+             * Numerales tabulares.
+             * Cada 0-9 ocupa exactamente el mismo
+             * ancho dentro del número.
+             */
+            font-variant-numeric: tabular-nums;
+
+            font-feature-settings:
+                "tnum" 1;
+
+            font-kerning: none;
+
+            text-align: center;
+
+            letter-spacing: .01em;
+
+            text-shadow:
+                1px 1px 0 rgba(255, 255, 255, .45);
+        }
+
+        .label {
+            margin-top: 10px;
+
+            color: var(--faded);
+
+            font-family:
+                "Cormorant Garamond",
+                serif;
+
+            font-size:
+                clamp(10px, 1.3vw, 13px);
+
+            font-weight: 600;
+
+            letter-spacing: .16em;
+
+            text-transform: uppercase;
+
+            white-space: nowrap;
+        }
+
+        .separator {
+            padding-top: 7px;
+
+            color: var(--gold);
+
+            font-family:
+                "IM Fell English",
+                serif;
+
+            font-size:
+                clamp(22px, 3vw, 32px);
+
+            opacity: .7;
+        }
+
+        .bottom {
+            margin-top:
+                clamp(25px, 5vh, 48px);
+        }
+
+        .bottom-line {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            gap: 10px;
+
+            color: var(--faded);
+
+            font-size:
+                clamp(12px, 1.7vw, 15px);
+
+            font-style: italic;
+        }
+
+        .heart {
+            color: var(--wine);
+
+            font-size: 17px;
+
+            animation:
+                heartbeat 2.8s
+                ease-in-out
+                infinite;
+        }
+
+        .tiny-date {
+            margin-top: 10px;
+
+            color: var(--gold);
+
+            font-family:
+                "IM Fell English",
+                serif;
+
+            font-size: 11px;
+
+            letter-spacing: .22em;
+        }
+
+        .flower {
+            position: absolute;
+            z-index: 1;
+
+            color: var(--wine);
+
+            opacity: .14;
+
+            font-family:
+                "Italianno",
+                cursive;
+
+            font-size: 100px;
+
+            pointer-events: none;
+        }
+
+        .flower.left {
+            left: 3%;
+            bottom: 7%;
+
+            transform:
+                rotate(-18deg);
+        }
+
+        .flower.right {
+            top: 7%;
+            right: 3%;
+
+            transform:
+                rotate(15deg)
+                scaleX(-1);
+        }
+
+        .year {
+            position: absolute;
+            z-index: 3;
+
+            bottom: 21px;
+            left: 50%;
+
+            transform:
+                translateX(-50%);
+
+            color:
+                rgba(80, 58, 42, .38);
+
+            font-family:
+                "IM Fell English",
+                serif;
+
+            font-size: 10px;
+
+            letter-spacing: .3em;
+        }
+
+        @keyframes entrance {
+            from {
+                opacity: 0;
+                transform:
+                    translateY(18px);
+            }
+
+            to {
+                opacity: 1;
+                transform:
+                    translateY(0);
+            }
+        }
+
+        @keyframes heartbeat {
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: .7;
+            }
+
+            50% {
+                transform: scale(1.12);
+                opacity: 1;
+            }
+        }
+
+        /* =========================================
+           TABLET
+        ========================================= */
+
+        @media (max-width: 700px) {
+
+            .page {
+                width: 94vw;
+                height: 92vh;
+                min-height: 480px;
+            }
+
+            .page::before {
+                inset: 13px;
+            }
+
+            .page::after {
+                inset: 19px;
+            }
+
+            .corner {
+                display: none;
+            }
+
+            .flower {
+                opacity: .08;
+            }
+
+            .countdown {
+                width: 100%;
+            }
+
+            .number {
+                font-size:
+                    clamp(39px, 9vw, 58px);
+            }
+
+            .label {
+                letter-spacing: .1em;
+            }
+        }
+
+        /* =========================================
+           MÓVIL
+        ========================================= */
+
+        @media (max-width: 500px) {
+
+            .page {
+                width: 94vw;
+                height: 94vh;
+
+                min-height: 0;
+
+                padding:
+                    35px
+                    15px;
+            }
+
+            .content {
+                max-width: 100%;
+            }
+
+            .ornament {
+                margin-bottom: 10px;
+            }
+
+            h1 {
+                font-size:
+                    clamp(53px, 17vw, 72px);
+            }
+
+            .subtitle {
+                max-width: 290px;
+
+                margin:
+                    14px auto
+                    30px;
+
+                font-size: 15px;
+            }
+
+            .countdown {
+                width: 100%;
+
+                grid-template-columns:
+                    minmax(0, 1fr)
+                    auto
+                    minmax(0, 1fr)
+                    auto
+                    minmax(0, 1fr)
+                    auto
+                    minmax(0, 1fr);
+            }
+
+            .number {
+                font-size:
+                    clamp(31px, 11vw, 47px);
+
+                letter-spacing: 0;
+            }
+
+            .label {
+                margin-top: 8px;
+
+                font-size: 8px;
+
+                letter-spacing: .07em;
+            }
+
+            .separator {
+                padding-top: 3px;
+
+                font-size: 20px;
+            }
+
+            .bottom {
+                margin-top: 30px;
+            }
+
+            .bottom-line {
+                max-width: 260px;
+
+                margin: 0 auto;
+
+                font-size: 12px;
+
+                line-height: 1.35;
+            }
+
+            .tiny-date {
+                margin-top: 8px;
+
+                font-size: 9px;
+            }
+
+            .year {
+                bottom: 17px;
+
+                font-size: 8px;
+            }
+        }
+
+        /* =========================================
+           MÓVILES BAJITOS
+        ========================================= */
+
+        @media (max-height: 600px) {
+
+            .page {
+                height: 94vh;
+            }
+
+            .ornament {
+                margin-bottom: 6px;
+            }
+
+            h1 {
+                font-size:
+                    clamp(48px, 12vh, 65px);
+            }
+
+            .subtitle {
+                margin-top: 10px;
+                margin-bottom: 20px;
+            }
+
+            .number {
+                font-size:
+                    clamp(30px, 8vh, 46px);
+            }
+
+            .bottom {
+                margin-top: 20px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .content,
+            .heart {
+                animation: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <main class="page">
+
+        <span class="corner tl">❦</span>
+        <span class="corner tr">❦</span>
+        <span class="corner bl">❦</span>
+        <span class="corner br">❦</span>
+
+        <div class="flower left">❧</div>
+        <div class="flower right">❧</div>
+
+        <section class="content">
+
+            <div class="ornament">✦</div>
+
+            <p class="eyebrow">
+                para un día especial
+            </p>
+
+            <h1>
+                Falta poquito...
+            </h1>
+
+            <p class="subtitle">
+                Hay momentos que merecen ser esperados.
+            </p>
+
+            <div
+                class="countdown"
+                aria-label="Cuenta regresiva"
+                aria-live="polite"
+            >
+
+                <div class="unit">
+                    <span
+                        class="number"
+                        id="days"
+                    >
+                        000
+                    </span>
+
+                    <span class="label">
+                        días
+                    </span>
+                </div>
+
+                <span class="separator">·</span>
+
+                <div class="unit">
+                    <span
+                        class="number"
+                        id="hours"
+                    >
+                        00
+                    </span>
+
+                    <span class="label">
+                        horas
+                    </span>
+                </div>
+
+                <span class="separator">·</span>
+
+                <div class="unit">
+                    <span
+                        class="number"
+                        id="minutes"
+                    >
+                        00
+                    </span>
+
+                    <span class="label">
+                        minutos
+                    </span>
+                </div>
+
+                <span class="separator">·</span>
+
+                <div class="unit">
+                    <span
+                        class="number"
+                        id="seconds"
+                    >
+                        00
+                    </span>
+
+                    <span class="label">
+                        segundos
+                    </span>
+                </div>
+
+            </div>
+
+            <div class="bottom">
+
+                <div class="bottom-line">
+                    <span>
+                        y mientras tanto, que siga pasando el tiempo
+                    </span>
+
+                    <span class="heart">
+                        ♡
+                    </span>
+                </div>
+
+                <div class="tiny-date">
+                    8 · 02 · 2027
+                </div>
+
+            </div>
+
+        </section>
+
+        <span class="year">
+            2027
+        </span>
+
+    </main>
+
+    <script>
+        const targetDate =
+            new Date("2027-02-08T00:00:00");
+
+        const daysElement =
+            document.getElementById("days");
+
+        const hoursElement =
+            document.getElementById("hours");
+
+        const minutesElement =
+            document.getElementById("minutes");
+
+        const secondsElement =
+            document.getElementById("seconds");
+
+        function pad(value, length) {
+            return String(value)
+                .padStart(length, "0");
+        }
+
+        function updateCountdown() {
+
+            const now = new Date();
+
+            const difference =
+                targetDate.getTime() -
+                now.getTime();
+
+            if (difference <= 0) {
+
+                daysElement.textContent = "000";
+                hoursElement.textContent = "00";
+                minutesElement.textContent = "00";
+                secondsElement.textContent = "00";
+
+                return;
+            }
+
+            const totalSeconds =
+                Math.floor(
+                    difference / 1000
+                );
+
+            const days =
+                Math.floor(
+                    totalSeconds / 86400
+                );
+
+            const hours =
+                Math.floor(
+                    (totalSeconds % 86400) / 3600
+                );
+
+            const minutes =
+                Math.floor(
+                    (totalSeconds % 3600) / 60
+                );
+
+            const seconds =
+                totalSeconds % 60;
+
+            daysElement.textContent =
+                pad(days, 3);
+
+            hoursElement.textContent =
+                pad(hours, 2);
+
+            minutesElement.textContent =
+                pad(minutes, 2);
+
+            secondsElement.textContent =
+                pad(seconds, 2);
+        }
+
+        updateCountdown();
+
+        setInterval(
+            updateCountdown,
+            1000
+        );
+    </script>
+
+</body>
+</html>
